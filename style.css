@@ -1,0 +1,1010 @@
+/* ============================================================
+   PORTFOLIO — DARK MODERN WITH BOLD RED ACCENT
+   Color palette, typography, and layout system
+   ============================================================ */
+
+/* ===== DESIGN TOKENS ===== */
+/* Centralized variables for easy customization */
+:root {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --red: #E63946;
+    --red-soft: #B91C2C;
+    --text-primary: #F5F5F5;
+    --text-secondary: #888888;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(230, 57, 70, 0.4);
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --section-pad: 8rem;
+    --max-width: 1200px;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Disable custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot, .cursor-ring {
+        display: none !important;
+    }
+}
+
+/* ===== UTILITIES ===== */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-pad {
+    padding: var(--section-pad) 0;
+}
+
+.text-red {
+    color: var(--red);
+}
+
+/* Section label (e.g. "01 — About") */
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* Section title — large, bold, modern */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 2.5rem;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+/* Subtle dot + ring that follows mouse, desktop only */
+.cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+}
+
+.cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(230, 57, 70, 0.35);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+}
+
+/* Ring grows when hovering interactive elements */
+.cursor-ring.hovering {
+    width: 56px;
+    height: 56px;
+    border-color: var(--red);
+}
+
+/* ===== NAVBAR ===== */
+/* Fixed at top, transparent initially, blur on scroll */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+}
+
+/* When scrolled: blur background + subtle border */
+.navbar.scrolled {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo — initials with red dot accent */
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-logo span {
+    color: var(--red);
+}
+
+/* Desktop menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Underline animation on hover and active state */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--red);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Hamburger — hidden on desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger transforms into X when active */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== HERO SECTION ===== */
+/* Full-screen hero with grid pattern and red glow */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle grid pattern using linear gradients */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 80%);
+    opacity: 0.5;
+}
+
+/* Red glow accent — subtle, positioned top-right */
+.hero-glow {
+    position: absolute;
+    top: -15%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(230, 57, 70, 0.12) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+/* Second subtle glow bottom-left for depth */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(185, 28, 44, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-greeting {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Name — largest typography element with red dot accent */
+.hero-name {
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 1.5rem;
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ===== BUTTONS ===== */
+/* Primary — solid red, ghost — outlined transparent */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: var(--text-primary);
+}
+
+.btn-primary:hover {
+    background: var(--red-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(230, 57, 70, 0.25);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+.btn-ghost:hover {
+    border-color: var(--red);
+    color: var(--red);
+    transform: translateY(-2px);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+/* Vertical line with animated fill, positioned bottom-center */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.scroll-indicator span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 50px;
+    background: var(--border);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated fill line that moves down */
+.scroll-line span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--red);
+    animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+}
+
+/* ===== ABOUT SECTION ===== */
+/* Two-column: image on left, text on right */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Image wrapper with subtle border and decorative accent */
+.about-image {
+    position: relative;
+}
+
+.image-wrapper {
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.05);
+    transition: filter 0.4s ease, transform 0.6s ease;
+}
+
+.about-image:hover .image-wrapper img {
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.03);
+}
+
+/* Decorative red border offset behind image */
+.image-accent {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 60%;
+    height: 60%;
+    border: 2px solid var(--red);
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    font-size: 1.02rem;
+}
+
+/* Stats row — large numbers with red accent */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+/* ===== PROJECTS SECTION ===== */
+/* Asymmetric grid: featured projects span full width */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+
+/* Large projects span both columns */
+.project-large {
+    grid-column: 1 / -1;
+}
+
+.project-item {
+    position: relative;
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Thumbnail with zoom on hover */
+.project-thumb {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.project-large .project-thumb img {
+    height: 420px;
+}
+
+/* Hover: zoom image */
+.project-link:hover .project-thumb img {
+    transform: scale(1.06);
+}
+
+/* Dark overlay that appears on hover */
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-link:hover .project-overlay {
+    opacity: 1;
+}
+
+/* Red arrow that slides in on hover */
+.project-arrow {
+    font-size: 2rem;
+    color: var(--red);
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.project-link:hover .project-arrow {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Project meta below thumbnail */
+.project-meta {
+    padding-top: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.project-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 420px;
+}
+
+.project-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.project-tag span {
+    font-size: 0.8rem;
+    color: var(--red);
+    font-weight: 500;
+}
+
+.project-year {
+    color: var(--text-secondary) !important;
+    font-weight: 400 !important;
+}
+
+/* ===== SKILLS SECTION ===== */
+/* Three-column grid for skill groups */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.skill-group-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.skill-list li:hover {
+    border-bottom-color: var(--border);
+}
+
+.skill-name {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.skill-list li:hover .skill-name {
+    color: var(--text-primary);
+}
+
+/* Minimal dot indicators (5 dots) instead of progress bars */
+.skill-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+}
+
+.dot.active {
+    background: var(--red);
+}
+
+/* ===== EXPERIENCE / TIMELINE ===== */
+/* Vertical timeline with thin line and red dots */
+.timeline {
+    position: relative;
+    max-width: 720px;
+    padding-left: 2rem;
+}
+
+/* Vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+/* Red dot indicator on the line */
+.timeline-dot {
+    position: absolute;
+    left: -2rem;
+    top: 0.3rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 0 4px rgba(230, 57, 70, 0.15);
+}
+
+.timeline-year {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--red);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.timeline-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-company {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.timeline-content p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+/* ===== CONTACT SECTION ===== */
+/* Centered layout with large headline */
+.contact {
+    text-align: center;
+}
+
+.contact-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-inner .section-label {
+    text-align: center;
+}
+
+.contact-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+}
+
+.contact-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.contact-cta {
+    margin-bottom: 4rem;
+}
+
+/* Contact info — email and location side by side */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.contact-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--red);
+}
+
+/* Social links with hover underline */
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-socials a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.contact-socials a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--red);
+    transition: width 0.3s ease;
+}
+
+.contact-socials a:hover {
+    color: var(--text-primary);
+}
+
+.contact-socials a:hover::after {
+    width: 100%;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-inner p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.back-top {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-top:hover {
+    color: var(--red);
+}
+
+/* ===== SCROLL REVEAL ANIMATION ===== */
+/* Elements with .reveal class start hidden, fade up when .visible added */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVE: TABLET (max 900px) ===== */
+@media (max-width: 900px) {
+    :root {
+        --section-pad: 5rem;
+    }
+
+    /* About becomes single column */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .image-wrapper img {
+        height: 380px;
+    }
+
+    /* Skills: two columns */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    /* Projects: single column */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-large {
+        grid-column: auto;
+    }
+
+    .project-thumb img {
+        height: 280px;
+    }
+}
+
+/* ===== RESPONSIVE: MOBILE (max 600px) ===== */
+@media (max-width: 600px) {
+    :root {
+        --section-pad: 4rem;
+    }
+
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    /* Hamburger menu becomes visible */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile menu slides in from right */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.4s ease;
+        border-left: 1px solid var(--border);
+        padding: 2rem;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+    }
+
+    /* Hero adjustments */
+    .hero-name {
+        letter-spacing: -2px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    /* Stats: single column */
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Skills: single column */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Image accent hidden on mobile */
+    .image-accent {
+        display: none;
+    }
+
+    /* Contact info stacked */
+    .contact-info {
+        gap: 2rem;
+    }
+
+    /* Footer centered */
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}

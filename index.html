@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio of Rasqa — Creative Developer & Designer crafting modern digital experiences.">
+    <title>Rasqa — Creative Developer & Designer</title>
+
+    <!-- Google Fonts: Space Grotesk (headings) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== CUSTOM CURSOR (desktop only, subtle) ===== -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <!-- Sticky navigation with blur effect on scroll; becomes solid when scrolling down -->
+    <header class="navbar" id="navbar">
+        <nav class="nav container">
+            <!-- Logo / Initials — replace with your own -->
+            <a href="#home" class="nav-logo">R<span>.</span></a>
+
+            <!-- Desktop menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Hamburger for mobile -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <!-- Full-screen hero with grid pattern, red glow, large typography -->
+    <section id="home" class="hero">
+        <!-- Decorative: subtle grid pattern background -->
+        <div class="hero-grid"></div>
+        <!-- Decorative: red glow accent -->
+        <div class="hero-glow"></div>
+
+        <div class="container hero-content">
+            <p class="hero-greeting reveal">Hello, I'm</p>
+            <h1 class="hero-name reveal">Rasqa<span class="text-red">.</span></h1>
+            <p class="hero-headline reveal">Crafting Digital Experiences<br>That Matter.</p>
+            <p class="hero-desc reveal">A creative developer & designer building modern, immersive, and user-centered digital products — where bold ideas meet clean execution.</p>
+            <div class="hero-buttons reveal">
+                <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <a href="#about" class="scroll-indicator reveal" aria-label="Scroll to About">
+            <span>Scroll</span>
+            <div class="scroll-line"><span></span></div>
+        </a>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <!-- Two-column layout: profile image + description with stats -->
+    <section id="about" class="about section-pad">
+        <div class="container">
+            <div class="section-label reveal">01 — About</div>
+            <div class="about-grid">
+                <!-- Left: Profile image -->
+                <div class="about-image reveal">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1500648766836-d5cf5488a16b?q=80&w=800&auto=format&fit=crop" alt="Profile portrait of Rasqa">
+                    </div>
+                    <!-- Decorative frame accent -->
+                    <div class="image-accent"></div>
+                </div>
+
+                <!-- Right: Description + stats -->
+                <div class="about-text reveal">
+                    <h2 class="section-title">A creative mind with a passion for <span class="text-red">detail</span>.</h2>
+                    <p>I'm a multidisciplinary creative developer who blends design sensibility with engineering precision. With years of experience crafting digital products, I focus on creating experiences that are not only functional but also memorable and impactful.</p>
+                    <p>My approach is simple: understand the problem deeply, design with intention, and execute with care. I believe great work lives in the details — the micro-interactions, the transitions, the moments that make a product feel alive.</p>
+
+                    <!-- Stats with large red numbers -->
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">50<span class="text-red">+</span></span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5<span class="text-red">+</span></span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">30<span class="text-red">+</span></span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15<span class="text-red">+</span></span>
+                            <span class="stat-label">Awards Won</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS / SELECTED WORK ===== -->
+    <!-- Asymmetric editorial grid — not a standard card layout -->
+    <section id="projects" class="projects section-pad">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">02 — Selected Work</div>
+                <h2 class="section-title">Projects that define <br>my <span class="text-red">craft</span>.</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 — Large / featured -->
+                <article class="project-item project-large reveal">
+                    <a href="#" class="project-link">
+                        <div class="project-thumb">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop" alt="Nebula Dashboard project">
+                            <div class="project-overlay">
+                                <span class="project-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <div class="project-info">
+                                <h3>Nebula Dashboard</h3>
+                                <p>A data visualization platform with real-time analytics and a sleek dark interface.</p>
+                            </div>
+                            <div class="project-tag">
+                                <span>Web Design</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 2 — Medium -->
+                <article class="project-item reveal">
+                    <a href="#" class="project-link">
+                        <div class="project-thumb">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="Pulse Mobile App project">
+                            <div class="project-overlay">
+                                <span class="project-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <div class="project-info">
+                                <h3>Pulse Mobile App</h3>
+                                <p>A fitness companion app focused on habit-building and clean UX.</p>
+                            </div>
+                            <div class="project-tag">
+                                <span>UI/UX Design</span>
+                                <span class="project-year">2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 3 — Medium -->
+                <article class="project-item reveal">
+                    <a href="#" class="project-link">
+                        <div class="project-thumb">
+                            <img src="https://images.unsplash.com/photo-1626785774593-1a4d739711bf?q=80&w=800&auto=format&fit=crop" alt="Vertex Branding project">
+                            <div class="project-overlay">
+                                <span class="project-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <div class="project-info">
+                                <h3>Vertex Branding</h3>
+                                <p>A complete brand identity system for a tech startup in the SaaS space.</p>
+                            </div>
+                            <div class="project-tag">
+                                <span>Branding</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 4 — Large / featured -->
+                <article class="project-item project-large reveal">
+                    <a href="#" class="project-link">
+                        <div class="project-thumb">
+                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=1200&auto=format&fit=crop" alt="Aether Portfolio project">
+                            <div class="project-overlay">
+                                <span class="project-arrow">&rarr;</span>
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <div class="project-info">
+                                <h3>Aether Portfolio</h3>
+                                <p>An award-winning personal portfolio built with custom animations and WebGL.</p>
+                            </div>
+                            <div class="project-tag">
+                                <span>Frontend Development</span>
+                                <span class="project-year">2023</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <!-- Three groups: Development, Design, Tools — clean, no heavy progress bars -->
+    <section id="skills" class="skills section-pad">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">03 — Skills</div>
+                <h2 class="section-title">Tools that bring <br>ideas to <span class="text-red">life</span>.</h2>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Group: Development -->
+                <div class="skill-group reveal">
+                    <h3 class="skill-group-title">Development</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">HTML5</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></span></li>
+                        <li><span class="skill-name">CSS3 / Sass</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></span></li>
+                        <li><span class="skill-name">JavaScript</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">React</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Node.js</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">TypeScript</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                    </ul>
+                </div>
+
+                <!-- Group: Design -->
+                <div class="skill-group reveal">
+                    <h3 class="skill-group-title">Design</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">Figma</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></span></li>
+                        <li><span class="skill-name">UI/UX Design</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Photoshop</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Illustrator</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Prototyping</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Motion Design</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></span></li>
+                    </ul>
+                </div>
+
+                <!-- Group: Tools -->
+                <div class="skill-group reveal">
+                    <h3 class="skill-group-title">Tools</h3>
+                    <ul class="skill-list">
+                        <li><span class="skill-name">Git & GitHub</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></span></li>
+                        <li><span class="skill-name">VS Code</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span></span></li>
+                        <li><span class="skill-name">Webpack / Vite</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Docker</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">Framer Motion</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                        <li><span class="skill-name">GSAP</span><span class="skill-dots"><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE / TIMELINE ===== -->
+    <!-- Vertical timeline with thin line and red indicators -->
+    <section id="experience" class="experience section-pad">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">04 — Experience</div>
+                <h2 class="section-title">My <span class="text-red">journey</span> so far.</h2>
+            </div>
+
+            <div class="timeline">
+                <!-- Timeline item 1 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2023 — Present</span>
+                        <h3>Senior Frontend Developer</h3>
+                        <span class="timeline-company">Studio Vertex, Jakarta</span>
+                        <p>Leading frontend architecture and design systems for enterprise-grade web applications. Mentoring junior developers and driving best practices.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2021 — 2023</span>
+                        <h3>Frontend Developer</h3>
+                        <span class="timeline-company">Agency Nimbus, Bandung</span>
+                        <p>Built responsive, high-performance websites for clients across fintech, e-commerce, and SaaS. Collaborated closely with design teams.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2020 — 2021</span>
+                        <h3>Junior Developer</h3>
+                        <span class="timeline-company">Startup Lumen, Remote</span>
+                        <p>Developed and maintained web features using modern JavaScript frameworks. Gained deep experience in agile workflows and CI/CD.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 4 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-year">2019 — 2020</span>
+                        <h3>Freelance Designer & Developer</h3>
+                        <span class="timeline-company">Self-employed</span>
+                        <p>Worked with small businesses and individuals to deliver branding, websites, and digital products from concept to launch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <!-- Large headline, contact info, social links, CTA button -->
+    <section id="contact" class="contact section-pad">
+        <div class="container">
+            <div class="contact-inner reveal">
+                <div class="section-label">05 — Contact</div>
+                <h2 class="contact-title">Have a Project in Mind?<br>Let's Make It <span class="text-red">Happen</span>.</h2>
+                <p class="contact-subtitle">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+
+                <!-- CTA button -->
+                <a href="mailto:hello@rasqa.dev" class="btn btn-primary contact-cta">Start a Conversation</a>
+
+                <!-- Contact details: email, location, socials -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:hello@rasqa.dev">hello@rasqa.dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Location</span>
+                        <span>Jakarta, Indonesia</span>
+                    </div>
+                </div>
+
+                <!-- Social links -->
+                <div class="contact-socials">
+                    <a href="#" aria-label="GitHub">GitHub</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="Dribbble">Dribbble</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <!-- Minimal footer with copyright and back-to-top -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Rasqa. Crafted with precision.</p>
+            <a href="#home" class="back-top">Back to top &uarr;</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
